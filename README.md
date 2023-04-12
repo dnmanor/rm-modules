@@ -1,9 +1,7 @@
 # rm-modules
 
-Copy index.js out to the root of your node files run `node index.js`
+tooling to remove node modules and free up space ...
 
-still not so useful.. should be able to run this in one place and pass directories through it.
-
-## TODO
-
-- [ ] accept root directories as input
+- Clone repo
+- Navigate into directory
+- Run `node index.js <path_to_directory_to_be_searched>`
