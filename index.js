@@ -2,19 +2,20 @@ const os = require("os");
 const { exec } = require("child_process");
 
 const platform = os.platform();
+const pathToSearch = process.argv[2] || ".";
 
 function handleUserFlow() {
   switch (platform) {
     case "darwin":
     case "linux":
       FetchDirListAndCleanUp(
-        `find . -name "node_modules" -type d -prune -print | xargs du -chs`
+        `find ${pathToSearch} -name "node_modules" -type d -prune -print | xargs du -chs`
       );
       break;
 
     case "win32":
       FetchDirListAndCleanUp(
-        `FOR /d /r . %d in (node_modules) DO @IF EXIST "%d" echo %d"`
+        `FOR /d /r ${pathToSearch} %d in (node_modules) DO @IF EXIST "%d" echo %d`
       );
       break;
 
